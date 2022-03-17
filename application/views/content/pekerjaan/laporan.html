@@ -1,0 +1,214 @@
+<style type="text/css">
+	h3 {text-align: center;}
+	p {text-align: left; font-size: 10pt;}
+</style>
+<h3>Laporan Pekerjaan</h3>
+<br>
+<table style="border-collapse: collapse;">
+	<tr>
+		<td>
+			<p><strong>Pekerjaan</p></strong>
+		</td>
+		<td>
+			:
+		</td>
+		<td>
+			<p>Penataan</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong><p>Lokasi</p></strong>
+		</td>
+		<td>
+			:
+		</td>
+		<td>
+			<p>Penataan</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong><p>periode</p></strong>
+		</td>
+		<td>
+			:
+		</td>
+		<td>
+			<p>Penataan</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong><p>Pelaksana</p></strong>
+		</td>
+		<td>
+			:
+		</td>
+		<td>
+			<p>Penataan</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong><p>Pengawas</p></strong>
+		</td>
+		<td>
+			:
+		</td>
+		<td>
+			<p>PT. Concept Desin Architect</p>
+		</td>
+	</tr>
+</table>
+<br>
+<br>
+<table style="border-collapse: collapse; border: 1px solid black;">
+  <thead>
+  <tr>
+    <th>No</th>
+    <th>Uraian pekerjaan</th>
+    <th>Sat</th>
+    <th>Volume</th>
+    <th>Harga Sat</th>
+    <th>Nilai</th>
+    <th>Bobot</th>
+  </tr>
+
+  <?php 
+  foreach ($section0 as $i) : 
+    $section = $i['section'];
+    // ini untuk perulangan section dimana sati section memiliki banyak pekerjaan
+
+    $sql ="SELECT id , `pekerjaan` FROM `new_pekerjaan` WHERE section = '$section' GROUP by pekerjaan ORDER BY id ASC";
+    $query = $this->db->query($sql);
+    if ($query->num_rows() > 0) {
+      foreach ($query->result() as $row) {
+        // ini untuk perulangan pekerjaan dengan where kondisi session yang sedang berjalan, misal session 0 meiliki 1 atau 2 pekerjaan
+        ?>
+
+  <tr>
+    <td colspan="7" style="text-align:left;"><?php echo $section; ?> -> <strong><?php echo $row->pekerjaan; ?></td>
+  </tr>
+  </thead>
+  <tbody>
+  <?php 
+  // untuk mendapatkan Uraian pekerjaan dengan kondisi where hasil perulangan pekerjaan diatas
+  $n = 1;
+  $sql ="SELECT * FROM new_pekerjaan WHERE pekerjaan = '$row->pekerjaan' AND section = '$section' AND proyek = '$proyek' ORDER BY id ASC";
+  $query = $this->db->query($sql);
+  if ($query->num_rows() > 0) {
+    foreach ($query->result() as $row) {
+  ?>
+
+  <tr>
+    <td><?= $n; ?></td>
+    <td><?= $row->uraian_pekerjaan; ?></td>
+    <td><?= $row->satuan; ?></td>
+    <td><?= round($row->volume,2); ?></td>
+    <td><?= $row->harga_satuan; ?></td>
+    <td><?= $row->nilai; ?></td>
+    <td><?= round($row->bobot,2); ?></td>
+  </tr>
+
+  <?php $n++; } } ?>
+  <!-- ini akhir perulangan where kondisi pekerjaan -->
+
+  <tr>
+  <?php 
+  $sql ="SELECT pekerjaan, SUM(nilai) as totalnilai, SUM(bobot) as totalbobot FROM `new_pekerjaan` WHERE pekerjaan = '$row->pekerjaan' AND section = '$section' AND proyek = '$proyek'";
+  $query = $this->db->query($sql);
+  if ($query->num_rows() > 0) {
+    foreach ($query->result() as $row) {
+  
+   ?>
+    <td colspan="5" style="text-align: right;">Sub Total</td>
+    <th> <?php echo $row->totalnilai; ?> </th>
+    <th> <?php echo round($row->totalbobot,2); ?> % </th>
+  
+  <?php } } ?>
+  <!-- ini untuk mendapatkan nilai bobot dari kondisi where pekerjaan -->
+  </tr>
+  </tbody>
+  <tfoot>
+  
+  </tfoot>
+<?php } } ?>
+<!-- ini akhir perulangan lihat pekerjaan darikondisi where section -->
+
+<?php endforeach; ?>
+<!-- ini akhir perulangan lihat section -->
+
+
+</table>
+
+<br><br><br><br>
+<div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                 <h3 id="myModalLabel">Delete Confirmation</h3>
+
+            </div>
+            <div class="modal-body">
+                <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the cover?
+                    <br>This cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+               <button class="btn btn-default"data-dismiss="modal" aria-hidden="true">Cancel</button> <a href="#" class="btn btn-danger"  id="modalDelete" >Delete</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<table>
+    <thead>
+        <th>Cover Name</th>
+        <th>Sum Insured</th>
+        <th>Info</th>
+        <th style="width: 3.5em;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name 1</td>
+            <td>insured 1</td>
+            <td>info 1</td>
+            <td> <a href="cover-type.php?id=1"><i class="fa fa-pencil"></i></a>
+ <a href="#myModal" class="trash" data-id="1" role="button" data-toggle="modal"><i class="fa fa-trash-o">x</i></a>
+
+            </td>
+        </tr>
+        <td>name 2</td>
+        <td>insured 2</td>
+        <td>info 2</td>
+        <td> <a href="cover-type.php?id=2"><i class="fa fa-pencil"></i></a>
+ <a href="#myModal" class="trash" data-id="2" role="button" data-toggle="modal"><i class="fa fa-trash-o">x</i></a>
+
+        </td>
+        </tr>
+        <td>name 3</td>
+        <td>insured 3</td>
+        <td>info 3</td>
+        <td> <a href="cover-type.php?id=3"><i class="fa fa-pencil"></i></a>
+ <a href="#myModal" class="trash" data-id="3" role="button" data-toggle="modal"><i class="fa fa-trash-o">x</i></a>
+
+        </td>
+        </tr>
+    </tbody>
+</table>
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-git.js"></script>
+
+<style type="text/css">
+	.trash{padding:2px; border:1px solid red; margin-left:10px; background-color:red; color:#fff}
+td{padding:5px}
+</style>
+
+<script type="text/javascript">
+	$('.trash').click(function(){
+    var id=$(this).data('id');
+    $('#modalDelete').attr('href','delete-cover.php?id='+id);
+})
+</script>

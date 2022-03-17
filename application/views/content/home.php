@@ -1,0 +1,1 @@
+<img style="width: 100%; min-height: 200px;" src="<?php echo base_url();?>aset/img/ds.jpg"/>

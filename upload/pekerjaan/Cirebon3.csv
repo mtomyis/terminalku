@@ -1,0 +1,51 @@
+Sub Pekerjaan,Nilai
+PEKERJAAN PERSIAPAN, 0, 0
+Pembuatan Papan Nama Kegiatan, 1065199.57, 0.005
+Pembuatan Direksi Keet (Lantai Plester), 43401347.25, 0.202
+Pembuatan Gudang Semen dan Alat-alat, 46341066.8, 0.215
+Perlengkapan Direksi Keet, 15941595.32, 0.074
+Pagar Sementara, 35182101, 0.163
+Pekerjaan Bongkaran dan Perataan Tanah, 11589594.66, 0.054
+K3 Proyek, 51842000, 0.2407
+Dukumentasi dan Pelaporan, 29120700, 0.135
+PEKERJAAN LANDSCAPE, 0, 0
+Kanstin, 360280656.03, 1.673
+Pengecatan Kanstin, 19693408.95, 0.091
+Taman, 95356250, 0.443
+Beton Jalan t = 20 cm, 2750925507.67, 12.775
+Saluran U ditc + Penutup Uk 60.60.120 cm, 1324155882.8, 6.149
+Saluran U ditc Uk 60.60.120 cm, 101573650.86, 0.472
+Dinding Pembatas Area Luar, 1026962342, 4.769
+Dinding Pembatas Area Jalur Bus dan Kendaraan Pribadi , 635469358.31, 2.951
+Bak Kontrol, 33185097.12, 0.154
+PEKERJAAN BANGUNAN UTAMA LT 1, 0, 0
+RUANG GENSET  (4 x 9)m2, 174806487.92, 0.812
+Genset Silent 60 KVA setara Perkins, 306348000, 1.423
+SDP 2, 23990400, 0.111
+SDP 3, 27700092, 0.128
+Line Power, 67848273.16, 0.315
+Signage, 314480098.24, 1.46
+Fire Safety, 20941620, 0.097
+Pintu Akses Ruang Keberangkatan, 6040001.92, 0.028
+AC, 227273422.22, 1.055
+Pekerjaan penutup kanopi, 385400073.3, 1.791
+Sanitari, 13994400, 0.065
+Pekerjaan Shelter, 51554446.99, 0.239
+PEKERJAAN BANGUNAN UTAMA LT 2, 0, 0
+Pekerjaan Kolom + Balok , 3604027521.28, 16.737
+Pekerjaan Dinding, 512039829.86, 2.378
+Pekerjaan Lantai, 707796123.97, 3.287
+Pekerjaan Plafond, 357987245.14, 1.662
+Pekerjaan Kusen daun Pintu, 429049163.16, 1.992
+Pekerjaan Sanitair, 554006933.28, 2.572
+Elektrikal, 318945175.52, 1.481
+Line Power, 41070961.08, 0.191
+Signage, 65278386, 0.303
+Fire Safety, 20941620, 0.097
+Pekerjaan Railing Kaca, 100866923.12, 0.468
+PEKERJAAN PENERANGAN JALAN, 0, 0
+PEKERJAAN LAMPU HIGH MASK , 155826230.45, 0.724
+PEKERJAAN LPJU, 180187104.9, 0.837
+PEKERJAAN PEMINDAHAN HIGH MASK EXISTING, 43229110.38, 0.202
+FASILITAS PENUNJANG, 0, 0
+Fasilitas Penunjang, 6240396587.94, 28.979
